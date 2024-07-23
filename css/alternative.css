@@ -1,0 +1,198 @@
+/*   ADMIN_PAGE   */
+* {
+    box-sizing: border-box; /* Inclui padding e border no cálculo da largura e altura */
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+.adm{
+    background-image: url(../img/fundoadm.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column; /* Organiza os elementos verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+    height: 100vh; /* Ocupa toda a altura da janela */
+    margin: 0;
+}
+
+.container-adm{
+    background-color:rgba(255, 249, 249, 0.898); 
+    color: #000;
+    border-radius: 9px;
+    justify-content: center;
+    align-items:center;
+    width: 430px;
+    height: 400px;
+    margin:0px auto;
+    text-align: center;
+    padding-top: 20px;
+    margin-top: 90px;
+    text-transform: uppercase;
+    position: relative;
+}  
+
+.new_user{
+    color: #000;
+    position: absolute;
+    margin: 0 auto;
+    bottom: 20px;
+    right: 120px;
+}
+
+
+
+/*   USER_PAGE   */
+.user{
+    background-image: url(../img/fundouser.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column; /* Organiza os elementos verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+    height: 100vh; /* Ocupa toda a altura da janela */
+    margin: 0;
+}
+.container-user{
+    background-color:rgba(255, 249, 249, 0.898); 
+    color: #000;
+    border-radius: 9px;
+    justify-content: center;
+    align-items:center;
+    width: 430px;
+    height: 400px;
+    margin:85px auto;
+    text-align: center;
+    padding-top: 20px;
+    margin-top: 90px;
+    text-transform: uppercase;
+}   
+
+
+
+/* CREATE NEW USER  */
+
+.create_user_body{
+    background-image: url(../img/fundoadm.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.form_container{
+    background-color:rgba(255, 249, 249, 0.898);  
+    color: #000;
+    border-radius: 9px;
+    width: 430px;
+    height: 400px;
+    margin:85px auto;
+    padding: 20px;
+    position: relative;
+    top: -20px; 
+} 
+
+
+
+.heading_createuser{
+    background-color: rgba(12, 12, 12, 0.5);
+    height: 100px;
+    padding-top: 40px;
+    padding-left: 10px;
+    color: #FFF;
+    text-align: center;
+}
+
+.input_box{
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input_type{
+    width: 200px;
+    height: 30px;
+}
+
+#submit_bot{
+    height: 30px;
+    width: 100px;
+    margin-top: 1   0px;
+    margin-bottom: 20px;
+}
+
+/* HEADER DO LOGIN */
+
+.header_adm {
+    background-color: #000; /* Cor cinza com 50% de transparência */
+    color: #FFF;
+    display: flex;
+    width: 100%;
+    height: 80px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    /* justify-content: center; Centraliza o conteúdo do cabeçalho */
+    padding-left: 20px ;
+    padding: 20px auto;
+    position: relative;
+    padding-top: 20px;
+    
+}
+
+.header_adm .logout-btn {
+    color: #FFF;
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    padding: 10px;
+    text-decoration: none;
+    z-index: 1;
+    font-size: 18px;
+} 
+
+.header_user {
+    background-color: #000; /* Cor cinza com 50% de transparência */
+    color: #FFF;
+    display: flex;
+    width: 100%;
+    height: 80px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    /* justify-content: center; Centraliza o conteúdo do cabeçalho */
+    padding-left: 20px ;
+    padding: 20px auto;
+    position: relative;
+    padding-top: 20px;
+    
+}
+
+.header_user .logout-btn {
+    color: #FFF;
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    padding: 10px;
+    text-decoration: none;
+    z-index: 1;
+    font-size: 18px;
+}
+
+
+/* FOOTER DO LOGIN */
+ footer{
+    background-color: #000; /* Cor cinza com 50% de transparência */
+    color: #FFF;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+
+

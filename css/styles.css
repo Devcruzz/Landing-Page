@@ -1,0 +1,130 @@
+/* Assegurar que elementos não excedam a largura da viewport */
+* {
+    box-sizing: border-box; /* Inclui padding e border no cálculo da largura e altura */
+}
+
+/* Garantir que a largura máxima do container e outros elementos não ultrapassem a viewport */
+.container, .header, footer {
+    max-width: 100vw; /* Limita a largura máxima à largura da viewport */
+}
+
+/* Reinicialização básica */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background-image: url(../img/Site2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column; /* Organiza os elementos verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+    height: 100vh; /* Ocupa toda a altura da janela */
+    margin: 0;
+}
+
+/* Estilos para o cabeçalho */
+.header {
+    background-color:rgba(12, 12, 12, 0.5); /* Cor cinza com 50% de transparência */
+    color: #FFF;
+    display: flex;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    /* justify-content: center; Centraliza o conteúdo do cabeçalho */
+    padding-left: 20px ;
+    padding: 20px auto;
+}
+
+/* Estilos para o contêiner */
+.container {
+    background-color: rgba(128, 128, 128, 0.5); /* Cor cinza com 50% de transparência */
+    text-align: center;
+    width: 100%;
+    height: 400px;
+    max-width: 400px;
+    border-radius: 9px;
+    display: flex;
+    flex-direction: column; /* Alinha os itens verticalmente */
+    justify-content: center; /* Centraliza verticalmente os itens dentro do contêiner */
+    align-items: center; /* Centraliza horizontalmente os itens dentro do contêiner */
+    margin: 85px auto; /* Margem automática para centralizar o contêiner */
+    position: relative;
+}
+
+/* Estilos para o título dentro do contêiner */
+.container #heading{
+    color: #FFF;
+    text-align: center;
+    margin-bottom: 20px; /* Espaço abaixo do título */
+    /* align-self: flex-start; Alinha o título no topo do contêiner */
+    position: absolute;
+    top:3px;
+}
+
+/* Estilos para os campos de entrada */
+.style_forms input {
+    margin: 20px;
+    padding: 8px;
+    width: 230px;
+    height: 45px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Sombra leve */
+}
+
+/* Estilos para o botão de envio */
+.submit {
+    margin-top: 20px; /* Espaço acima do botão de envio */
+    padding: 10px 20px;
+    background-color: #000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.3s ease, transform 0.5s ease; /* Transição suave para a mudança de cor */
+
+}
+
+.submit:hover {
+    background-color: rgb(197, 197, 197); /* Cor cinza escuro quando o mouse passa por cima */
+    transform: translateY(-3px);
+    border: 1px solid #000;
+    color: #000;
+}
+
+ /* FOOTER */
+ footer{
+    background-color: #000; /* Cor cinza com 50% de transparência */
+    color: #FFF;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+ 
+/* Página admin || user */
+.login{
+    color: #FFF;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.login a{
+    color:#fff;
+    justify-content: center;
+}
+
+/* ESTILIZACAO DA MENSAGEM DE ERRO */
+.error{
+    color: #FFF; /* Cor vermelha para mensagem de erro */
+}
+
+
