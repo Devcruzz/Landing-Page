@@ -15,25 +15,31 @@ if ($btncaduser) {
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
     // var_dump($dados);
 
+     // Criptografar a senha
+    $senha_criptografada = password_hash($dados["senha"], PASSWORD_DEFAULT);
+
     // Corrigir a consulta SQL
     $result_usuario = "INSERT INTO usuario (nome, email, senha, nivel_acesso) VALUES (
         '".$mysqli->real_escape_string($dados["nome"])."',
         '".$mysqli->real_escape_string($dados["email"])."',
-        '".$mysqli->real_escape_string($dados["senha"])."',
+        '".$mysqli->real_escape_string($senha_criptografada)."',
         '".$mysqli->real_escape_string($dados["nivel_acesso"])."'
     )";
 
     // Executar a consulta
-    if (mysqli_query($mysqli, $result_usuario)) {
-        echo "Novo usuário cadastrado com sucesso.";
-        header("Location: ../index.php");
+    if ($mysqli->query($result_usuario)) {
+        $_SESSION['success_message'] = "Novo usuário cadastrado com sucesso.";
+
     } else {
         echo "Erro: " . mysqli_error($mysqli);
     }
-}
 
-// Fechar a conexão
-$mysqli->close();
+    // Fechar a conexão
+    $mysqli->close();
+
+    header("Location: ../index.php");
+    exit();
+}
 ?>
 
 
@@ -86,5 +92,3 @@ $mysqli->close();
             </div>
         </form>
 </body>
-
-
