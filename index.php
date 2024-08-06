@@ -20,36 +20,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = $mysqli->real_escape_string($_POST["Email"]);
         $senha = $mysqli->real_escape_string($_POST["Password"]);
 
-        // Monta a query SQL para selecionar usuário com o email e senha fornecidos
-        $sql_code = "SELECT * FROM usuario WHERE email = '$email' AND senha = '$senha';";
+        // Monta a query SQL para selecionar usuário com o email fornecido
+        $sql_code = "SELECT * FROM usuario WHERE email = '$email';";
         
         // Executa a query SQL no banco de dados
         $sql_query = $mysqli->query($sql_code) or die("Falha na execução: " . $mysqli->error); 
 
-        // Verifica se encontrou exatamente um usuário com o email e senha fornecidos
+        // Verifica se encontrou exatamente um usuário com o email fornecido
         $qtd = $sql_query->num_rows;
 
         if ($qtd == 1) {
-            // Obtém os dados do usuário encontrado
+            // Obtém os dados do usuário encontrado $email && 
             $usuario = $sql_query->fetch_assoc();
 
-        // Define variáveis de sessão com os dados do usuário
-            $_SESSION['id'] = $usuario['id'];
-            $_SESSION['nome'] = $usuario['nome'];
-            $_SESSION['email'] = $usuario['email'];
-            $_SESSION['senha'] = $usuario['senha'];
-            $_SESSION['nivel_acesso'] = $usuario['nivel_acesso'];
 
-            // Redireciona o usuário para a página apropriada com base no nível de acesso
-            if ($usuario['nivel_acesso'] == 'admin') {
-                header("Location: pages/admin_page.php");
-                exit();
-            } elseif ($usuario['nivel_acesso'] == 'user') {
-                header("Location: pages/user_page.php");
-                exit();
+            // Verifica a senha usando password_verify
+            if (password_verify($senha, $usuario['senha'])) {
+                echo "Senha verificada com sucesso<br>";
+
+
+                // Define variáveis de sessão com os dados do usuário
+                $_SESSION['id'] = $usuario['id'];
+                $_SESSION['nome'] = $usuario['nome'];
+                $_SESSION['email'] = $usuario['email'];
+                $_SESSION['nivel_acesso'] = $usuario['nivel_acesso'];
+
+                // Redireciona o usuário para a página apropriada com base no nível de acesso
+                if ($usuario['nivel_acesso'] == 'admin') {
+                    header("Location: pages/admin_page.php");
+                    exit();
+                } elseif ($usuario['nivel_acesso'] == 'user') {
+                    header("Location: pages/user_page.php");
+                    exit();
+                }
+            } else {
+                // Mensagem de erro caso a senha esteja incorreta
+                $_SESSION['error_message'] = "Falha ao logar, e-mail ou senha incorretos!";
             }
         } else {
-            // Mensagem de erro caso não encontre usuário com o email e senha fornecidos
+            // Mensagem de erro caso não encontre usuário com o email fornecido
             $_SESSION['error_message'] = "Falha ao logar, e-mail ou senha incorretos!";
         }
     }
@@ -58,15 +67,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header("Location: index.php");
     exit();
 }
+
+// Fechar a conexão
+$mysqli->close();
 ?>
+
+
 <body>
     <div class="container">
         <h1 id="heading">Entrar</h1>
 
-        <?php         
-        if (isset($_SESSION['error_message'])) {
-            echo "<div class='error'>" . $_SESSION['error_message'] . "</div>";
-            unset($_SESSION['error_message']);         
+        <?php     
+            if (isset($_SESSION['success_message'])) {
+                echo '<p style="color: green;">' . $_SESSION['success_message'] . '</p>';
+                unset($_SESSION['success_message']); // Limpa a mensagem após exibi-la
+            }
+            if (isset($_SESSION['error_message'])) {
+                echo "<div class='error'>" . $_SESSION['error_message'] . "</div>";
+                unset($_SESSION['error_message']);         
             }         
         ?>
 
